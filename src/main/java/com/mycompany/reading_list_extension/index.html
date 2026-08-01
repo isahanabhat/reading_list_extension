@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <title>URL Capture</title>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <meta charset="utf-8">
+        <style>
+            body {
+                background-color: #0f172a;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 300px;
+                height: 150px;
+                padding: 10px;
+                font-family: Arial, sans-serif;
+                margin: 0;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                text-align: center;
+            }
+            .heading {
+                color: #eeebda;
+                font-family: "Press Start 2P", system-ui;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            #urlDisplay {
+                word-break: break-all;
+                background: #f1f1f1;
+                padding: 8px;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+            .pixel-btn {
+                /* Typography & Theme */
+                font-family: 'Press Start 2P', monospace;
+                font-size: 14px;
+                color: #eeebda;
+                background-color: #282b4a; /* Retro green */
+
+                /* Layout Padding */
+                padding: 12px 24px;
+                cursor: pointer;
+                position: relative;
+                display: inline-block;
+
+                /* Reset Default Styles */
+                border: none;
+                outline: none;
+                user-select: none;
+
+                /* The Pixel Border Magic (Stacked Box Shadows) */
+                /* Format: X-offset Y-offset Color */
+                box-shadow:
+                    0px -4px 0px 0px #000000,  /* Top Outer Border */
+                    0px 4px 0px 0px #000000,   /* Bottom Outer Border */
+                    -4px 0px 0px 0px #000000,  /* Left Outer Border */
+                    4px 0px 0px 0px #000000,   /* Right Outer Border */
+                    inset -4px -4px 0px 0px #282b4a; /* Bottom/Right Inner Shadow for 3D look */
+            }
+
+            /* Hover Effect: Subtle color change */
+            .pixel-btn:hover {
+                background-color: #282b4a;
+            }
+
+            /* Active State: Simulates pushing the button downwards */
+            .pixel-btn:active {
+                transform: translateY(4px);
+                box-shadow:
+                    0px -4px 0px 0px #000000,
+                    0px 0px 0px 0px #000000,   /* Collapse bottom shadow */
+                    -4px 0px 0px 0px #000000,
+                    4px 0px 0px 0px #000000,
+                    inset -4px -4px 0px 0px #282b4a;
+            }
+
+
+            /* Sparkle Particle Styling */
+            .sparkle {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: white;
+                clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+                pointer-events: none;
+                animation: popOut 0.6s ease-out forwards;
+            }
+
+            @keyframes popOut {
+                0% {
+                    transform: translate(0, 0) scale(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(var(--x), var(--y)) scale(1);
+                    opacity: 0;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="heading">press the button to capture URL</h2>
+
+            <button type="button" id="sendBtn" class="pixel-btn">
+                <span>✨Capture✨</span>
+            </button>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
+</html>
