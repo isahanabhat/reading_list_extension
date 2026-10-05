@@ -32,6 +32,13 @@ public class UrlServer {
         this.receiver_port = receiver_port;
         
         String pathValue = System.getenv("DATA_DIR"); // get user's data path
+        if (pathValue == null) {
+            System.out.println("DATA_DIR environment variable does not exist.");
+            System.out.println("Create the environment variable and rerun.");
+            System.out.println("Exiting...");
+            System.exit(0);
+        }
+        
         Path folderPath = Paths.get(pathValue, "reading_folder"); // reading list folder
         this.csvPath = Paths.get(pathValue, "reading_folder", "reading_list.csv"); // reading list csv
         
